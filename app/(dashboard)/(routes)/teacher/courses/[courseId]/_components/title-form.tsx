@@ -15,7 +15,7 @@ import {
 
 import {Input} from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Pencil } from 'lucide-react';
+import { Pencil, X } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -63,13 +63,16 @@ const TitleForm = ({courseId,initialData}: Props) => {
       <div className="font-medium flex items-center justify-between">
         Course title 
         <Button onClick={toggleEditing} variant="borderless">
-          { isEditing
-            ? ( <>Cancel</> )
-            : ( <>
+          {isEditing ? (
+            <p className="text-xs text-white px-1 py-1 rounded-full bg-red-700/80 flex flex-row gap-2">
+              <X className="h-4 w-4 "/>
+            </p>
+            ) : (
+              <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit title
-            </> )
-          }
+              Edit description
+              </>
+              )}
         </Button>
       </div>
       {isEditing 
