@@ -12,10 +12,10 @@ import {
 import TitleForm from "./_components/title-form";
 import DescriptionForm from "./_components/description-form";
 import ImageForm from "./_components/image-form";
-import { Combobox } from "@/components/ui/combobox";
 import CategoryForm from "./_components/category-form";
 import PriceForm from "./_components/price-form";
 import AttachmentForm from "./_components/attachment-form";
+import ChaptersForm from "./_components/chapters-form";
 
 const CoursePage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -24,8 +24,14 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
     where: {
       id: params.courseId,
+      userId
     },
     include:{
+      chapters:{
+        orderBy:{
+          position:'asc'
+        }
+      },
       attachments: {
         orderBy:{
           name: "desc"
@@ -46,6 +52,7 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
     course.imageUrl,
     course.price,
     course.categoryId,
+    course.chapters.some(chapter => chapter.isPublished)
   ];
   const totalFields = requiredFields.length;
   const completedFields = requiredFields.filter(Boolean).length;
@@ -86,7 +93,7 @@ const CoursePage = async ({ params }: { params: { courseId: string } }) => {
               <IconBadge icon={ListChecks} variant="destructive" />
               <h2 className="text-xl font-medium">Course Chapters</h2>
             </div>
-            TODO: CHAPTERS
+          <ChaptersForm initialData={course} courseId={course.id} />
           </div>
         </div>
         <div className="grid grid-cols-1 gap-y-2">
