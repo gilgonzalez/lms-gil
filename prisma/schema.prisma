@@ -75,7 +75,7 @@ model Chapter {
   isPublished Boolean @default(false)
   isFree Boolean @default(false)
 
-  muxDate MuxData?
+  muxData MuxData?
 
   courseId String
   course Course @relation(fields: [courseId], references: [id], onDelete :Cascade)
