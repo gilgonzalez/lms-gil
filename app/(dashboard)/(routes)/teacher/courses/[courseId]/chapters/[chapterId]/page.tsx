@@ -44,12 +44,11 @@ const EditChapter = async ( { params }: { params: { courseId: string, chapterId:
   const isCompleted = requiredFields.every(Boolean);
   return (
     <>
-    {!chapter.isPublished && (
+    
       <Banner 
-        variant="warning"
-        label="This chapter is not published yet. It will not be visible in the course"
+        variant={chapter.isPublished ? "success" : "warning"}
+        label={chapter.isPublished ? "This chapter is now avaible for your students" : "This chapter is not published yet. It will not be visible in the course"}
       />
-    )}
       <div className='p-6'>
         <div className="flex items-center justify-between">
           <div className="w-full">
