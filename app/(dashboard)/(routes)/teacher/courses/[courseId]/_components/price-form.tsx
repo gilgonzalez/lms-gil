@@ -25,7 +25,6 @@ import { Course } from "@prisma/client";
 import { Input } from "@/components/ui/input";
 import { formatPrice } from "@/lib/format";
 
-const MAX_DESCRIPTION = 500
 const formSchema = z.object({
   price: z.coerce.number()
 });
@@ -55,7 +54,7 @@ const PriceForm
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, data);
-      toast.success("Description changed successfully");
+      toast.success("Price changed successfully");
       toggleEditing();
       router.refresh();
     } catch (error) {
