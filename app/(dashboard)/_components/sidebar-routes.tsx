@@ -3,6 +3,7 @@ import React from 'react'
 import {BarChart, Compass, Layout, List} from "lucide-react"
 import SideBarItem from './sidebar-item';
 import { usePathname } from 'next/navigation';
+import { SheetClose } from '@/components/ui/sheet';
 
 const guestRoutes = [
     {
@@ -37,12 +38,12 @@ const SideBarRoutes = () => {
     <div className='flex flex-col w-full'>
         {
             routes.map((route)=>(
-                <SideBarItem 
-                    key={route.href} 
-                    icon={route.icon}
-                    label={route.label}
-                    href={route.href}
-                />
+                    <SideBarItem 
+                        key={route.href}
+                        icon={route.icon}
+                        label={route.label}
+                        href={route.href}
+                    />
             ))
         }
     </div>

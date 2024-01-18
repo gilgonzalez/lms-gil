@@ -19,6 +19,7 @@ const SideBarItem = ({icon : Icon, label, href} : Props) => {
 
   const onRouteClick = () => {
     router.push(href)
+    router.refresh()
   }
   
   return (
