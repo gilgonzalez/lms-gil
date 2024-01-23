@@ -5,12 +5,11 @@ import axios from "axios";
 
 
 import { Button } from "@/components/ui/button";
-import { PlusCircle, ImageIcon, X, File, Loader2 } from "lucide-react";
+import { PlusCircle, X, File, Loader2 } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Attachment, Course } from "@prisma/client";
-import Image from "next/image";
 import { FileUpload } from "@/components/file-upload";
 
 const formSchema = z.object({
@@ -38,7 +37,7 @@ const AttachmentForm = ({ courseId, initialData }: Props) => {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       await axios.post(`/api/courses/${courseId}/attachments`, data);
-      toast.success("Description changed successfully");
+      toast.success("Attachment added successfully");
       toggleEditing();
       router.refresh();
     } catch (error) {

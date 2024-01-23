@@ -11,7 +11,7 @@ export async function PATCH(req: Request, {params} : {params : {courseId: string
     const {courseId, chapterId} = params;
     const {isPublished, ...values } = await req.json()
 
-    if(!userId) return new NextResponse("Unathorized", {status:401})
+    if(!userId) return new NextResponse("Unauthorized", {status:401})
 
     const ownCourse = await db.course.findUnique({
       where:{
@@ -19,7 +19,7 @@ export async function PATCH(req: Request, {params} : {params : {courseId: string
         userId
       }
     })
-    if(!ownCourse) return new NextResponse("Unathorized", {status:401})
+    if(!ownCourse) return new NextResponse("Unauthorized", {status:401})
 
     const chapter = await db.chapter.update({
       where : {
@@ -72,7 +72,7 @@ export async function DELETE(req: Request, {params} : {params : {courseId: strin
     const {userId} = auth()
     const {courseId, chapterId} = params;
 
-    if(!userId) return new NextResponse("Unathorized", {status:401})
+    if(!userId) return new NextResponse("Unauthorized", {status:401})
 
     const ownCourse = await db.course.findUnique({
       where:{

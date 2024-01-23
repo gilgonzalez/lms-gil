@@ -11,7 +11,7 @@ export async function DELETE(
   try {
     const { userId } = auth()
 
-    if(!userId) return new NextResponse("Unathorized", {status:401})
+    if(!userId) return new NextResponse("Unauthorized", {status:401})
 
     const courseOwner = await db.course.findUnique({
       where : {
@@ -20,7 +20,7 @@ export async function DELETE(
       }
     })
 //teacher/courses/api/courses/5e7bf7e9-699d-457e-b924-ffc0316754d5/attachments/fbae8909-7b8f-4d22-93d0-c77f8ba70ccb
-    if(!courseOwner) return new NextResponse("Unathorized: no owner found", {status : 401})
+    if(!courseOwner) return new NextResponse("Unauthorized: no owner found", {status : 401})
 
     const attachmentRemoved = await db.attachment.delete({
       where:{

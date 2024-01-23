@@ -9,7 +9,7 @@ const handleAuth = () => {
   console.log({hola})
   console.log({userId})
 
-  if(!userId) throw new Error("Unathorized")
+  if(!userId) throw new Error("Unauthorized")
   return { userId }
 }; // Fake auth function
  

@@ -98,17 +98,17 @@ const EditChapter = async ( { params }: { params: { courseId: string, chapterId:
               chapterId={ chapterId }
             />
           </div>
-            <div>
-          <div className="flex items-center gap-x-2 ">
-            <IconBadge icon={Video}/>
-            <h2 className="text-xl">Add video</h2>
-          </div>
-          <ChapterVideoForm
-            initialData={ chapter }
-            courseId={ courseId }
-            chapterId={ chapterId }
-          />
+          <div className='space-y-4'>
+            <div className="flex flex-row items-center gap-x-2 ">
+              <IconBadge icon={Video}/>
+              <h2 className="text-xl">Add video</h2>
             </div>
+            <ChapterVideoForm
+              initialData={ chapter }
+              courseId={ courseId }
+              chapterId={ chapterId }
+            />
+          </div>
         </div>
       </div>
     </>

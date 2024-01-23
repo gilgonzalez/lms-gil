@@ -12,7 +12,7 @@ export async function  POST(
     const {userId} = auth()
     const {title} = await req.json()
 
-    if(!userId) return new NextResponse("Unathorized to create chapter", {status:401})
+    if(!userId) return new NextResponse("Unauthorized to create chapter", {status:401})
 
     const {courseId} = params
     if(!courseId) return new NextResponse("No course found to create chapter", {status:404})

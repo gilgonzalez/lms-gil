@@ -12,7 +12,7 @@ export async function PATCH(req : Request, {params} : {params : {courseId: strin
 
     const { userId } = auth()
     const { courseId } = params
-    if(!userId) return new NextResponse("Unathorized", {status: 401})
+    if(!userId) return new NextResponse("Unauthorized", {status: 401})
 
     const course = await db.course.findUnique({
       where : {

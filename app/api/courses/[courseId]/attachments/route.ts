@@ -10,7 +10,7 @@ export async function POST(
     const { userId } = auth();
     const {url} = await req.json()
 
-    if(!userId) return new NextResponse("Unathorized", {status:401})
+    if(!userId) return new NextResponse("Unauthorized", {status:401})
 
     const courseOwner = await db.course.findUnique({
       where : {
@@ -19,7 +19,7 @@ export async function POST(
       }
     })
 
-    if(!courseOwner) return new NextResponse("Unathorized Course", {status:401})
+    if(!courseOwner) return new NextResponse("Unauthorized Course", {status:401})
 
     const attachment = await db.attachment.create({
       data:{

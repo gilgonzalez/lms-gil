@@ -14,7 +14,7 @@ export async function PATCH(req: Request, {params} : {params : {courseId: string
     const {courseId} = params;
     const values = await req.json()
 
-    if(!userId) return new NextResponse("Unathorized", {status:401})
+    if(!userId) return new NextResponse("Unauthorized", {status:401})
 
     const course = await db.course.update({
       where : {
@@ -37,7 +37,7 @@ export async function DELETE(req: Request, {params} : {params : {courseId: strin
   try {
     const {userId} = auth()
     const { courseId} = params
-    if(!userId) return new NextResponse("Unathorized", {status:401})
+    if(!userId) return new NextResponse("Unauthorized", {status:401})
 
     const course = await db.course.findUnique({
       where: {
