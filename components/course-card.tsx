@@ -1,9 +1,9 @@
-import { Category } from '@prisma/client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IconBadge } from '@/components/icon-badge';
 import { BookOpen } from 'lucide-react';
 import { formatPrice } from '@/lib/format';
+import CourseProgress from './course-progress';
 
 interface Props{
   id: string;
@@ -51,7 +51,11 @@ const CourseCard = ({
             </div>
           </div>
           {progress !== null ? (
-            <p>progress component</p> 
+            <CourseProgress
+              value={progress}
+              size="small"
+              variant={progress === 100 ? "success" : "default"}
+            />
           ) : (
             <p className="text-md md:text-sm font-medium text-slate-700">{formatPrice(price)}</p>
           )}

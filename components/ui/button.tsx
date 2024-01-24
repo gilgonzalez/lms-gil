@@ -20,7 +20,9 @@ const buttonVariants = cva(
         borderless: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         confirm: "bg-green-500 hover:bg-green-500/80 text-white ",
-        enroll: "disabled:bg-[#07f]/50 bg-[#07f] hover:bg-[#07f]/80 text-white "
+        enroll: "disabled:bg-[#07f]/50 bg-[#07f] hover:bg-[#07f]/80 text-white ",
+        toSuccess:
+          "border border-input bg-background hover:bg-emerald-500/60 hover:text-white "
       },
       size: {
         default: "h-10 px-4 py-2",

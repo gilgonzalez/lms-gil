@@ -23,7 +23,7 @@ const NavbarRoutes = () => {
       <div className="flex gap-x-4 ml-auto items-center">
         {isTeacherPage || isCoursePage ? (
           <>
-          <Link href={'/'}>
+          <Link href={isCoursePage ? "/search" : "/"}>
             <Button variant={'ghost'} size={'sm'}>
               <LogOut className="h-4 w-4 mr-2" />
               Exit

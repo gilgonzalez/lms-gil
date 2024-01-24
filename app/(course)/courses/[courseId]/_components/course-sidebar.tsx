@@ -3,6 +3,8 @@ import { auth } from '@clerk/nextjs';
 import { Chapter, Course, UserProgress } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import CourseSidebarChapterItem from './course-sidebar-chapter-item';
+import { CourseWithProgressAndCategory } from '../../../../../actions/get-courses';
+import CourseProgress from '@/components/course-progress';
 
 interface Props {
   course: Course & {
@@ -33,6 +35,16 @@ const CourseSidebar = async ({course, progressCount} : Props) => {
           {course.title.toLocaleUpperCase()}
         </h1>
         {/**check progress */}
+        {
+          purchase && (
+            <div className="mt-10">
+              <CourseProgress 
+                variant="success"
+                value={progressCount}
+              />
+            </div>
+          )
+        }
       </div>
       <div className="flex flex-col w-full">
         {course.chapters && course.chapters.map((chapter) => (
