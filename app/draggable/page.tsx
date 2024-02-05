@@ -14,7 +14,7 @@ const DraggableContent = () => {
     {name: 'Pepe', id: 3},
   ])
 
-  const handleDragEnd= (event: DragEndEvent)=> {
+  const handleDragEnd= (event: DragEndEvent) => {
     const {active, over } = event
     // indice que estoy moviendo
     //? const indexDragged = personas.findIndex(persona => active.id === persona.id)
